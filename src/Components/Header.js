@@ -12,24 +12,11 @@ const Heading = styled.h1`
   background-color: black;
   padding: 2rem;
 `;
-const Input = styled.div`
-  font-size: 1.5em;
-  text-align: center;
-  color: black;
-  margin-top: 2rem;
 
-  & input {
-    padding: 15px;
-    border-radius: 100px;
-    border: 2px solid grey;
-    width: 700px;
-    outline: none;
-  }
-`;
 const Logo = styled.div`
   & img {
     margin-right: 20px;
-    width: 5vw;
+    width: 15vw;
   }
 `;
 
@@ -46,11 +33,6 @@ function Header() {
         </Logo>
         <h1>React Movie App</h1>
       </Heading>
-      <Input>
-        <div>
-          <input placeholder="Search for a Movie"></input>
-        </div>
-      </Input>
     </div>
   );
 }

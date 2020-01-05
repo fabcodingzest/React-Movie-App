@@ -10,7 +10,6 @@ const Movie = ({ movie }) => {
       : `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
   return (
     <div className="movie">
-      <h2>{movie.original_title}</h2>
       <div>
         <img
           width="200"
@@ -18,6 +17,7 @@ const Movie = ({ movie }) => {
           src={poster}
         />
       </div>
+      <h3>{movie.original_title}</h3>
       <h5 width="200px">{movie.Title}</h5>
       <p>({movie.release_date})</p>
     </div>

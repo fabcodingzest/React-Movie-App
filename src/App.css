@@ -61,6 +61,7 @@ body {
 .movie {
   padding: 5px 25px 10px 25px;
   max-width: 25%;
+  margin-top: 20px;
 }
 
 .errorMessage {
@@ -74,7 +75,7 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 input[type="submit"] {

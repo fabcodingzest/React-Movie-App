@@ -5,18 +5,21 @@ const DEFAULT_PLACEHOLDER_IMAGE =
 
 const Movie = ({ movie }) => {
   const poster =
-    movie.Poster === "N/A" ? DEFAULT_PLACEHOLDER_IMAGE : movie.Poster;
+    `https://image.tmdb.org/t/p/w500${movie.poster_path}` === "N/A"
+      ? DEFAULT_PLACEHOLDER_IMAGE
+      : `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
   return (
     <div className="movie">
-      <h2>{movie.title}</h2>
+      <h2>{movie.original_title}</h2>
       <div>
         <img
           width="200"
-          alt={`The movie titled: ${movie.Title}`}
+          alt={`The movie titled: ${movie.original_title}`}
           src={poster}
         />
       </div>
-      <p>({movie.Year})</p>
+      <h5 width="200px">{movie.Title}</h5>
+      <p>({movie.release_date})</p>
     </div>
   );
 };

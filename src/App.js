@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import Header from "./Components/Header";
 import Search from "./Components/Search";
 import Movie from "./Components/Movie";
+import axios from "axios";
 import "./App.css";
 
-const MOVIE_API_URL = "https://www.omdbapi.com/?s=man&apikey=4a3b711b"; // you should replace this with yours
+const MOVIE_API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=c94f52c104c381e14f84ce1191dd71f1&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`;
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -12,45 +13,31 @@ const App = () => {
   const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
-    fetch(MOVIE_API_URL)
-      .then(response => response.json())
-      .then(jsonResponse => {
-        setMovies(jsonResponse.Search);
-        setLoading(false);
-      });
+    async function getMovieData() {
+      const movie = await axios.get(MOVIE_API_URL);
+      console.log(movie.data.results);
+      setMovies(movie.data.results);
+      setLoading(false);
+    }
+    getMovieData();
   }, []);
 
-  const search = searchValue => {
+  const search = async searchValue => {
     setLoading(true);
     setErrorMessage(null);
 
-    fetch(`https://www.omdbapi.com/?s=${searchValue}&apikey=4a3b711b`)
-      .then(response => response.json())
-      .then(jsonResponse => {
-        if (jsonResponse.Response === "True") {
-          setMovies(jsonResponse.Search);
-          setLoading(false);
-        } else {
-          setErrorMessage(jsonResponse.Error);
-          setLoading(false);
-        }
-      });
+    async function searchMovie() {
+      const searchResult = await axios.get(`https://www.omdbapi.com/search`);
+    }
   };
   return (
     <div className="App">
       <Header />
-      <Search search={search} />
-      <p className="App-intro">Sharing a few of our favourite movies</p>
+      <Search />
       <div className="movies">
-        {loading && !errorMessage ? (
-          <span>loading...</span>
-        ) : errorMessage ? (
-          <div className="errorMessage">{errorMessage}</div>
-        ) : (
-          movies.map((movie, index) => (
-            <Movie key={`${index}-${movie.Title}`} movie={movie} />
-          ))
-        )}
+        {movies.map((movie, index) => (
+          <Movie key={`${index}-${movie.Title}`} movie={movie} />
+        ))}
       </div>
     </div>
   );

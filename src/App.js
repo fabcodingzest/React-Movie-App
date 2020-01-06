@@ -15,7 +15,6 @@ const App = () => {
   useEffect(() => {
     async function getMovieData() {
       const movie = await axios.get(MOVIE_API_URL);
-      console.log(movie.data.results);
       setMovies(movie.data.results);
       setLoading(false);
     }
@@ -27,17 +26,32 @@ const App = () => {
     setErrorMessage(null);
 
     async function searchMovie() {
-      const searchResult = await axios.get(`https://www.omdbapi.com/search`);
+      try {
+        const searchResult = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=c94f52c104c381e14f84ce1191dd71f1&query=${searchValue}
+      `);
+        setMovies(searchResult.data.results);
+        setLoading(false);
+      } catch (error) {
+        setErrorMessage(error);
+        setLoading(false);
+      }
     }
+    searchMovie();
   };
   return (
     <div className="App">
       <Header />
-      <Search />
+      <Search search={search} />
       <div className="movies">
-        {movies.map((movie, index) => (
-          <Movie key={`${index}-${movie.Title}`} movie={movie} />
-        ))}
+        {loading && !errorMessage ? (
+          <span>loading...</span>
+        ) : errorMessage ? (
+          <div className="errorMessage">{errorMessage}</div>
+        ) : (
+          movies.map((movie, index) => (
+            <Movie key={`${index}-${movie.Title}`} movie={movie} />
+          ))
+        )}
       </div>
     </div>
   );

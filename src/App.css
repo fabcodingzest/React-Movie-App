@@ -104,6 +104,12 @@ input[type="submit"]:hover {
   outline: none;
 }
 
+.movies .load {
+  text-align: center;
+  font-size: 3rem;
+  text-transform: uppercase;
+}
+
 @media screen and (min-width: 694px) and (max-width: 915px) {
   .movie {
     max-width: 33%;

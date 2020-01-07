@@ -1,11 +1,12 @@
 import React from "react";
 
 const DEFAULT_PLACEHOLDER_IMAGE =
-  "https://m.media-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX300.jpg";
+  "http://lascrucesfilmfest.com/wp-content/uploads/2018/01/no-poster-available-737x1024.jpg";
 
 const Movie = ({ movie }) => {
   const poster =
-    `https://image.tmdb.org/t/p/w500${movie.poster_path}` === "N/A"
+    `https://image.tmdb.org/t/p/w500${movie.poster_path}` ===
+    `https://image.tmdb.org/t/p/w500null`
       ? DEFAULT_PLACEHOLDER_IMAGE
       : `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
   return (
@@ -18,7 +19,6 @@ const Movie = ({ movie }) => {
         />
       </div>
       <h3>{movie.original_title}</h3>
-      <h5 width="200px">{movie.Title}</h5>
       <p>({movie.release_date})</p>
     </div>
   );

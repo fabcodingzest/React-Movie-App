@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import Header from "./Components/Header";
 import Search from "./Components/Search";
 import Movie from "./Components/Movie";
@@ -22,7 +22,6 @@ const reducer = (state, action) => {
         errorMessage: null
       };
     case "SEARCH_MOVIES_SUCCESS":
-      console.log(action.payload);
       return {
         ...state,
         loading: false,
@@ -45,7 +44,6 @@ const App = () => {
   useEffect(() => {
     async function getMovieData() {
       const movies = await axios.get(MOVIE_API_URL);
-      console.log(movies);
       dispatch({ type: "SEARCH_MOVIES_SUCCESS", payload: movies.data.results });
     }
     getMovieData();

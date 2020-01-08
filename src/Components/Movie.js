@@ -11,7 +11,7 @@ const Movie = ({ movie }) => {
       : `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
   return (
     <div className="movie">
-      <div>
+      <div className="image-width">
         <img
           width="200"
           alt={`The movie titled: ${movie.original_title}`}

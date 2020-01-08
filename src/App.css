@@ -103,11 +103,19 @@ input[type="submit"]:hover {
   min-width: 70vw;
   outline: none;
 }
-
+.image-width {
+  width: 200px;
+  height: 300px;
+}
 .movies .load {
+  width: 100vw;
+  height: 50vh;
   text-align: center;
   font-size: 3rem;
   text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (min-width: 694px) and (max-width: 915px) {

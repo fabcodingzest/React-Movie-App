@@ -1,9 +1,11 @@
 import React, { useEffect, useReducer } from "react";
+import { Route } from "react-router-dom";
 import Header from "./Components/Header";
 import Search from "./Components/Search";
 import Movie from "./Components/Movie";
 import axios from "axios";
 import "./App.css";
+import DetailPage from "./Components/DetailPage";
 
 const MOVIE_API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=c94f52c104c381e14f84ce1191dd71f1&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`;
 
@@ -74,6 +76,7 @@ const App = () => {
   const { movies, errorMessage, loading } = state;
   return (
     <div className="App">
+      <Route exact path="/detail" render={() => <DetailPage />} />
       <Header />
       <Search search={search} />
       <div className="movies">

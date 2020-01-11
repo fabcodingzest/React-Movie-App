@@ -12,7 +12,7 @@ const Movie = ({ movie }) => {
       : `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
   return (
     <div className="movie">
-      <Link to={`/detail/${movie.original_title}`}>
+      <Link to={`/detail/${movie.original_title}/${movie.id}`}>
         <div className="image-width">
           <img
             width="200"

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Header from "./Header";
 
 const Search = props => {
   const [searchValue, setSearchValue] = useState("");
@@ -16,15 +17,18 @@ const Search = props => {
     resetInputField();
   };
   return (
-    <form className="search">
-      <input
-        value={searchValue}
-        onChange={handleSearchInput}
-        type="text"
-        placeholder="Search for a Movie"
-      />
-      <input onClick={callSearchFunction} type="submit" value="SEARCH" />
-    </form>
+    <div>
+      <Header />
+      <form className="search">
+        <input
+          value={searchValue}
+          onChange={handleSearchInput}
+          type="text"
+          placeholder="Search for a Movie"
+        />
+        <input onClick={callSearchFunction} type="submit" value="SEARCH" />
+      </form>
+    </div>
   );
 };
 export default Search;

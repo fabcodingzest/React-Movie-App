@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Header from "./Header";
+import { useHistory } from "react-router-dom";
 
 const Search = props => {
   const [searchValue, setSearchValue] = useState("");
@@ -11,7 +12,13 @@ const Search = props => {
     setSearchValue("");
   };
 
+  const history = useHistory();
+  console.log(history.location.pathname);
+
   const callSearchFunction = e => {
+    if (history.location.pathname !== "/") {
+      history.push("/");
+    }
     e.preventDefault();
     props.search(searchValue);
     resetInputField();

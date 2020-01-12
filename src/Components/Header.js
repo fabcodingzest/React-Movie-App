@@ -16,22 +16,24 @@ const Heading = styled.div`
 const Logo = styled.div`
   & img {
     margin-right: 20px;
-    width: 15vw;
+    width: 8vw;
   }
 `;
 
 function Header() {
   return (
-    <div>
-      <Heading>
+    <Heading>
+      <div>
         <Logo>
           <div>
             <img src={moviedb} alt="movie" />
           </div>
         </Logo>
+      </div>
+      <div>
         <h1>React Movie App</h1>
-      </Heading>
-    </div>
+      </div>
+    </Heading>
   );
 }
 

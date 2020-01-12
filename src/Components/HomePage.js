@@ -3,7 +3,7 @@ import Movie from "./Movie";
 import "../App.css";
 
 const HomePage = props => {
-  const { movies, errorMessage, loading} = props;
+  const { movies, errorMessage, loading } = props;
   return (
     <div className="App">
       <div className="movies">

@@ -48,9 +48,11 @@ function App() {
     getMovieData();
   }, []);
   const search = async searchValue => {
-    dispatch({
-      type: "SEARCH_MOVIES_REQUEST"
-    });
+    if (searchValue !== "") {
+      dispatch({
+        type: "SEARCH_MOVIES_REQUEST"
+      });
+    }
 
     async function searchMovie() {
       try {
@@ -62,8 +64,8 @@ function App() {
         });
       } catch (error) {
         dispatch({
-          type: "SEARCH_MOVIES_SUCCESS",
-          error: error
+          type: "SEARCH_MOVIES_FALIURE",
+          error: error.message
         });
       }
     }

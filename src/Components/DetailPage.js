@@ -1,26 +1,25 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";
+
 const DEFAULT_PLACEHOLDER_IMAGE =
   "http://lascrucesfilmfest.com/wp-content/uploads/2018/01/no-poster-available-737x1024.jpg";
 const Image = styled.div`
-  width: 200px;
+  width: 300px;
   height: 300px;
-  margin: 3em;
+  margin: 0 3em;
   align-self: flex-start;
 `;
 const Details = styled.div`
-  width: 60vw;
   height: 60vh;
   display: flex;
-  padding: 5em 0;
-  align-items: flex-start  ;
+  margin-right: 3em;
+  align-items: flex-start;
 `;
 const Container = styled.div`
-  width: 100vw;
-  height: 60vh;
   display: flex;
-  align-items: center;
+  margin: 1.5em;
 `;
 
 function DetailPage(props) {
@@ -38,18 +37,19 @@ function DetailPage(props) {
   }, [MOVIE_DETAIL_API]);
 
   console.log(detail);
+  const history = useHistory();
+  console.log(history);
   const poster =
-    `https://image.tmdb.org/t/p/w500${detail.poster_path}` ===
-    `https://image.tmdb.org/t/p/w500null`
+    `https://image.tmdb.org/t/p/w300/${detail.poster_path}` ===
+    `https://image.tmdb.org/t/p/w300/null`
       ? DEFAULT_PLACEHOLDER_IMAGE
-      : `https://image.tmdb.org/t/p/w500${detail.poster_path}`;
+      : `https://image.tmdb.org/t/p/w300/${detail.poster_path}`;
   return (
     <Container>
       <div>
         <Image>
           <div>
             <img
-              width="200"
               alt={`The movie titled: ${detail.original_title}`}
               src={poster}
             />
@@ -60,9 +60,9 @@ function DetailPage(props) {
         <div>
           <h1>{title}</h1>
           <h3>{detail.tagline}</h3>
-          <br/>
+          <br />
           <div className="Overview">{detail.overview}</div>
-          <br/>
+          <br />
           <h5>{detail.release_date}</h5>
         </div>
       </Details>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 const DEFAULT_PLACEHOLDER_IMAGE =
   "http://lascrucesfilmfest.com/wp-content/uploads/2018/01/no-poster-available-737x1024.jpg";
@@ -32,13 +32,13 @@ function DetailPage(props) {
       const movie = await axios.get(MOVIE_DETAIL_API);
       setDetails(movie.data);
     };
-    console.log("Inside UseEffect");
+    // console.log("Inside UseEffect");
     getMovieData();
   }, [MOVIE_DETAIL_API]);
 
-  console.log(detail);
-  const history = useHistory();
-  console.log(history);
+  // console.log(detail);
+  // const history = useHistory();
+  // console.log(history);    
   const poster =
     `https://image.tmdb.org/t/p/w300/${detail.poster_path}` ===
     `https://image.tmdb.org/t/p/w300/null`

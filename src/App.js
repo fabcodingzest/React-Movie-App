@@ -47,6 +47,7 @@ function App() {
     }
     getMovieData();
   }, []);
+
   const search = async searchValue => {
     if (searchValue !== "") {
       dispatch({
@@ -71,6 +72,7 @@ function App() {
     }
     searchMovie();
   };
+
   const { movies, errorMessage, loading } = state;
   return (
     <div>
@@ -85,7 +87,6 @@ function App() {
               movies={movies}
               errorMessage={errorMessage}
               loading={loading}
-              search={search}
               initialState={initialState}
             />
           )}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Header from "./Header";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 const Search = props => {
   const [searchValue, setSearchValue] = useState("");
@@ -12,15 +12,15 @@ const Search = props => {
     setSearchValue("");
   };
 
-  const history = useHistory();
-  console.log(history.location.pathname);
+  // const history = useHistory();
+  // console.log(history.location.pathname);
 
   const callSearchFunction = e => {
-    if (history.location.pathname !== "/") {
-      history.push("/");
-    }
+    // if (history.location.pathname !== "/") {
+    //   history.push("/");
+    // }
     e.preventDefault();
-    props.search(searchValue);
+    if (searchValue.length !== 0) props.search(searchValue);
     resetInputField();
   };
   return (
@@ -33,7 +33,11 @@ const Search = props => {
           type="text"
           placeholder="Search for a Movie"
         />
-        <input onClick={callSearchFunction} type="submit" value="SEARCH" />
+        <input
+          onClick={searchValue !== "" ? callSearchFunction : null}
+          type="submit"
+          value="SEARCH"
+        />
       </form>
     </div>
   );

@@ -32,13 +32,10 @@ function DetailPage(props) {
       const movie = await axios.get(MOVIE_DETAIL_API);
       setDetails(movie.data);
     };
-    // console.log("Inside UseEffect");
     getMovieData();
   }, [MOVIE_DETAIL_API]);
 
-  // console.log(detail);
-  // const history = useHistory();
-  // console.log(history);    
+    
   const poster =
     `https://image.tmdb.org/t/p/w300/${detail.poster_path}` ===
     `https://image.tmdb.org/t/p/w300/null`

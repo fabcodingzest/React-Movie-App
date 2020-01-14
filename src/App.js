@@ -49,26 +49,25 @@ function App() {
   }, []);
 
   const search = async searchValue => {
-    if (searchValue !== "") {
-      dispatch({
-        type: "SEARCH_MOVIES_REQUEST"
-      });
-    }
+    dispatch({
+      type: "SEARCH_MOVIES_REQUEST"
+    });
 
     async function searchMovie() {
-      try {
-        const searchResult = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=c94f52c104c381e14f84ce1191dd71f1&query=${searchValue}
+      if (searchValue !== "")
+        try {
+          const searchResult = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=c94f52c104c381e14f84ce1191dd71f1&query=${searchValue}
       `);
-        dispatch({
-          type: "SEARCH_MOVIES_SUCCESS",
-          payload: searchResult.data.results
-        });
-      } catch (error) {
-        dispatch({
-          type: "SEARCH_MOVIES_FALIURE",
-          error: error.message
-        });
-      }
+          dispatch({
+            type: "SEARCH_MOVIES_SUCCESS",
+            payload: searchResult.data.results
+          });
+        } catch (error) {
+          dispatch({
+            type: "SEARCH_MOVIES_FALIURE",
+            error: error.message
+          });
+        }
     }
     searchMovie();
   };

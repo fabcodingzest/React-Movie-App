@@ -10,7 +10,7 @@ const Heading = styled.div`
   justify-content: center;
   align-items: center;
   background-color: black;
-  padding: 2rem;
+  padding: 1rem;
 `;
 
 const Logo = styled.div`

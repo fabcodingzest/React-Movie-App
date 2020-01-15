@@ -39,11 +39,13 @@ const reducer = (state, action) => {
 };
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-
   useEffect(() => {
     async function getMovieData() {
       const movies = await axios.get(MOVIE_API_URL);
-      dispatch({ type: "SEARCH_MOVIES_SUCCESS", payload: movies.data.results });
+      dispatch({
+        type: "SEARCH_MOVIES_SUCCESS",
+        payload: movies.data.results
+      });
     }
     getMovieData();
   }, []);
@@ -87,6 +89,20 @@ function App() {
               errorMessage={errorMessage}
               loading={loading}
               initialState={initialState}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/search/:searchValue"
+          render={routeProps => (
+            <HomePage
+              reducer={reducer}
+              movies={movies}
+              errorMessage={errorMessage}
+              loading={loading}
+              initialState={initialState}
+              routeProps={routeProps}
             />
           )}
         />

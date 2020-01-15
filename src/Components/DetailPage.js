@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
-// import { useHistory } from "react-router-dom";
 
 const DEFAULT_PLACEHOLDER_IMAGE =
   "http://lascrucesfilmfest.com/wp-content/uploads/2018/01/no-poster-available-737x1024.jpg";
@@ -34,8 +33,7 @@ function DetailPage(props) {
     };
     getMovieData();
   }, [MOVIE_DETAIL_API]);
-
-    
+  // console.log(detail);
   const poster =
     `https://image.tmdb.org/t/p/w300/${detail.poster_path}` ===
     `https://image.tmdb.org/t/p/w300/null`
@@ -47,6 +45,7 @@ function DetailPage(props) {
         <Image>
           <div>
             <img
+              style={{ width: "300px" }}
               alt={`The movie titled: ${detail.original_title}`}
               src={poster}
             />

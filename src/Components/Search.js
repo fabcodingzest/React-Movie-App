@@ -14,9 +14,7 @@ const Search = props => {
   const history = useHistory();
   const callSearchFunction = e => {
     e.preventDefault();
-    if (history.location.pathname !== "/") {
-      history.push("/");
-    }
+    history.push(`/search/${searchValue}`);
     if (searchValue !== "") props.search(searchValue);
     resetInputField();
   };

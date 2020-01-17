@@ -1,25 +1,13 @@
-const searchReducer = (state = {}, action) => {
+import { FETCH_POPULAR_MOVIES } from "../actions/api";
+
+export default function(state = [], action) {
   switch (action.type) {
-    case "SEARCH_MOVIES_REQUEST":
+    case FETCH_POPULAR_MOVIES:
       return {
         ...state,
-        loading: true,
-        errorMessage: null
-      };
-    case "SEARCH_MOVIES_SUCCESS":
-      return {
-        ...state,
-        loading: false,
         movies: action.payload
-      };
-    case "SEARCH_MOVIES_FALIURE":
-      return {
-        ...state,
-        loading: false,
-        errorMessage: action.error
       };
     default:
       return state;
   }
-};
-export default searchReducer;
+}
